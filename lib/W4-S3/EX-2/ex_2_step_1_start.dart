@@ -31,7 +31,7 @@ class Mycard extends StatefulWidget {
 }
 
 class _MycardState extends State<Mycard> {
-  late bool isFavorite=true;
+  late bool isFavorite=false;
   void switchFavorite(){
     setState(() {
       isFavorite=!isFavorite;
@@ -61,7 +61,7 @@ class _MycardState extends State<Mycard> {
               ),
               IconButton(
                   onPressed: switchFavorite,
-                  icon: Icon(Icons.favorite,color:isFavorite?Colors.grey:Colors.red,)
+                  icon: Icon(Icons.favorite,color:isFavorite?Colors.red:Colors.grey,)
               )
             ],
           ),
