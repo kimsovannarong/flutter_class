@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// This Exercise haven't yet done because i have no more ideas to do !Sorry
+
 void main() => runApp(MaterialApp(
   home: Scaffold(
     backgroundColor: Colors.green,
@@ -14,9 +14,9 @@ void main() => runApp(MaterialApp(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Scorecard(text: "My Score in Flutter", color: Colors.green),
+              Scorecard(text: "My Score in Flutter"),
               Scorecard(text: "My Score in Dart"),
-              Scorecard(text: "My Score in React", color: Colors.green),
+              Scorecard(text: "My Score in React"),
             ],
           ),
         ),
@@ -40,6 +40,22 @@ class Scorecard extends StatefulWidget {
 }
 
 class _ScorecardState extends State<Scorecard> {
+  int score = 0;
+  int maxScore = 5; // the maximum score
+  void Increase(){
+    setState(() {
+      if(score<maxScore){
+        score++;
+      }
+    });
+  }
+  void Decrease(){
+    setState(() {
+      if(score>0){
+        score--;
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,19 +78,37 @@ class _ScorecardState extends State<Scorecard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.remove)),
+              IconButton(
+                onPressed: Decrease,//function decrease score
+                icon: Icon(Icons.remove),
+              ),
               SizedBox(width: 20), // for horizontal space between these 2 icons
-              IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+              IconButton(
+                onPressed:Increase,//function increase the scoe
+                icon: Icon(Icons.add),
+              ),
             ],
           ),
-          Container(
-            height: 40,
-            width: 500,
-            decoration: BoxDecoration(
-              color: widget.color,
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(10),
-            ),
+          Stack(
+            children: [
+              Container(
+                height: 40,
+                width: 500,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              Container(
+                height: 40,
+                width: 500 * (score / maxScore),
+                decoration: BoxDecoration(
+                  color: widget.color != null ? widget.color : Colors.green,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ],
           ),
         ],
       ),

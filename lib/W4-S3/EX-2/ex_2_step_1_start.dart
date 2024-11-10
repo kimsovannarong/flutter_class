@@ -61,7 +61,8 @@ class _MycardState extends State<Mycard> {
               ),
               IconButton(
                   onPressed: switchFavorite,
-                  icon: Icon(Icons.favorite,color:isFavorite?Colors.red:Colors.grey,)
+                  icon: Icon(
+                    Icons.favorite,color:isFavorite?Colors.red:Colors.grey,)
               )
             ],
           ),
