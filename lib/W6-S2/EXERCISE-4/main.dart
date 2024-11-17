@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_class/W6-S2/EXERCISE-4/jokes.dart';
 
 Color appColor = Colors.green[300] as Color;
-
 void main() => runApp(MaterialApp(
   home: Scaffold(
     backgroundColor: Colors.white,
@@ -9,23 +9,27 @@ void main() => runApp(MaterialApp(
       backgroundColor: appColor,
       title: const Text("Favorite Jokes"),
     ),
-    body: const FavoriteJokesList(), // Use a StatefulWidget to manage favorites
+    body: const FavoriteJokes(),
   ),
 ));
 
-class FavoriteJokesList extends StatefulWidget {
-  const FavoriteJokesList({super.key});
+class FavoriteJokes extends StatefulWidget {
+  const FavoriteJokes({super.key});
 
   @override
-  State<FavoriteJokesList> createState() => _FavoriteJokesListState();
+  State<FavoriteJokes> createState() => _FavoriteJokesState();
 }
 
-class _FavoriteJokesListState extends State<FavoriteJokesList> {
-  int _favoriteIndex = -1; // means no jokes sleected
-
+class _FavoriteJokesState extends State<FavoriteJokes> {
+  int? favoriteIndex;
+  List<Joke> jokes = Joke(title:"Title",description:"Description").getJokes();
   void setFavorite(int index) {
     setState(() {
-      _favoriteIndex = (_favoriteIndex == index) ? -1 : index;
+      if (favoriteIndex == index) {
+        favoriteIndex = null;  // if it is null then it is selected
+      } else {
+        favoriteIndex = index;
+      }
     });
   }
 
@@ -33,12 +37,12 @@ class _FavoriteJokesListState extends State<FavoriteJokesList> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        for (int i = 0; i < 20; i++)
+        for (var i = 0; i < 20; i++)
           FavoriteCard(
-            title: "Title ",
-            description: "Descriptions",
-            isFavorite: _favoriteIndex == i,
-            onFavoriteClick: () => setFavorite(i), // Update favorite selected
+            title: jokes[i].title,
+            description: jokes[i].description,
+            isFavorite: favoriteIndex == i, // check selected fav joke
+            onFavoriteClick: () => setFavorite(i),
           ),
       ],
     );
@@ -78,21 +82,20 @@ class FavoriteCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyle(
-                      color: appColor, fontWeight: FontWeight.w800),
+                  style:
+                  TextStyle(color: appColor, fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(height: 10.0),
-                Text(description),
+                Text(description)
               ],
             ),
           ),
           IconButton(
-            onPressed: onFavoriteClick,
-            icon: Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: isFavorite ? Colors.red : Colors.grey,
-            ),
-          ),
+              onPressed: onFavoriteClick, //call when btn pressed
+              icon: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: isFavorite ? Colors.red : Colors.grey,
+              ))
         ],
       ),
     );

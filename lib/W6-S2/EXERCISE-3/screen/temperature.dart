@@ -47,7 +47,7 @@ class Temperature extends StatelessWidget {
           Container(
               padding: const EdgeInsets.all(10),
               decoration: textDecoration,
-              child: const Text('test'))
+              child: const Text('0'))
         ],
       )),
     );

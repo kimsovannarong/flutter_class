@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_class/W6-S1/EXERCISE-2/data/profile_data.dart';
+import 'package:flutter_class/W6-S2/EXERCISE-2/data/profile_data.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -9,7 +9,6 @@ void main() {
 }
 
 const Color mainColor = Color(0xff5E9FCC);
-
 class ProfileApp extends StatelessWidget {
   const ProfileApp({super.key});
 

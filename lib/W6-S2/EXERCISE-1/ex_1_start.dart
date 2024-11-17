@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+//Q1 - In what scenarios might one approach be more advantageous than another?
+//Ans:
+
 List<String> colors = ["red", "blue", "green"];
 List<Widget> getColors() {
   return colors.map((item) => Text('Colors: $item')).toList();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_class/W6-S1/EXERCISE-2/model/profile_tile_model.dart';
+import 'package:flutter_class/W6-S2/EXERCISE-2/model/profile_tile_model.dart';
 
 ProfileData myProfile = ProfileData(
     name: "Kim Sovannarong",

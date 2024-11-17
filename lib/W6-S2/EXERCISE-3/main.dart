@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_class/W6-S1/EXERCISE-3/screen/temperature.dart';
-import 'package:flutter_class/W6-S1/EXERCISE-3/screen/welcome.dart';
+import 'package:flutter_class/W6-S2/EXERCISE-3/screen/temperature.dart';
+import 'package:flutter_class/W6-S2/EXERCISE-3/screen/welcome.dart';
 
 class TemperatureApp extends StatefulWidget {
   const TemperatureApp({super.key});
@@ -13,7 +13,7 @@ class TemperatureApp extends StatefulWidget {
 
 class _TemperatureAppState extends State<TemperatureApp> {
   bool isScreen =true;
-  void switchScreen(){
+  void toTempscreen(){
     setState(() {
       isScreen=!isScreen;
     });
@@ -34,7 +34,7 @@ class _TemperatureAppState extends State<TemperatureApp> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: isScreen? Welcome(onSwitchScreen: switchScreen) :Temperature(),
+          child: isScreen? Welcome(onSwitchScreen: toTempscreen) :Temperature(),
         ),
       ),
     );
