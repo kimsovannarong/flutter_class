@@ -5,14 +5,14 @@ import 'package:flutter_class/W6-S2/EXERCISE-2/model/profile_tile_model.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: ProfileApp(myProfile: myProfile),
+    home: ProfileApp(MyProfileData: myProfile),
   ));
 }
 
 const Color mainColor = Color(0xff5E9FCC);
 class ProfileApp extends StatelessWidget {
-  final ProfileData myProfile;
-  const ProfileApp({super.key, required this.myProfile});
+  final ProfileData MyProfileData;
+  const ProfileApp({super.key, required this.MyProfileData});
 
   @override
   Widget build(BuildContext context) {
