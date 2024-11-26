@@ -4,17 +4,20 @@ import 'model/quiz.dart';
 
 void main() {
 
-  Question q1 = const Question(
+  Question question1 =  Question(
       title: "Who is the best teacher?",
       possibleAnswers: ["ronan", "hongly", 'leangsiv'],
       goodAnswer: 'ronan');
-  Question q2 = const Question(
-      title: "Which color is the best?",
-      possibleAnswers: ["blue", "red", 'green'],
-      goodAnswer: 'red');
+  Question question2 =  Question(
+      title: "What is your favorite activity in class?",
+      possibleAnswers: ["self-learning", "sleeping", 'talking'],
+      goodAnswer: 'sleeping');
+  Question question3 =  Question(
+      title: "What do you do in your free time?",
+      possibleAnswers: ["studying", "biking", 'sleeping'],
+      goodAnswer: 'sleeping');
+  List<Question> myQuestions = [question1, question2,question3];
+  Quiz quizApp = Quiz(title: "Crazy Quizzes", questions: myQuestions);
 
-  List<Question> myQuestions = [q1, q2];
-  Quiz myQuiz = Quiz(title: "Crazy Quizz", questions: myQuestions);
-
-  runApp(QuizApp(myQuiz));
+  runApp(QuizApp(quizApp));
 }

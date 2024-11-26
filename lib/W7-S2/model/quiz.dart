@@ -13,3 +13,4 @@ class Question {
 
   const Question({required this.title, required this.possibleAnswers, required this.goodAnswer});
 }
+

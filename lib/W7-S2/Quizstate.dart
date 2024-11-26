@@ -1,0 +1,1 @@
+enum Quizstate{not_started, started, finished}
