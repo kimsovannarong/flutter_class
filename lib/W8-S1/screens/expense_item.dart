@@ -43,7 +43,6 @@ class _Expense_ItemState extends State<Expense_Item> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   widget.title,
@@ -56,6 +55,7 @@ class _Expense_ItemState extends State<Expense_Item> {
                 ),
               ],
             ),
+            Spacer(),
             Row(
               children: [
                 Icon(getIconForCategory(widget.category),color: Colors.black,),
