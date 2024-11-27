@@ -18,14 +18,17 @@ class ExpensesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: expenses.length,
-      itemBuilder: (context, index) => Expense_Item(
-          title:expenses[index].title,
-          price:expenses[index].amount,
-          date:expenses[index].date,
-          category:expenses[index].category),
-      // itemBuilder: (context, index) => Text(index.toString() + " - " + expenses[index].title),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+      child: ListView.builder(
+        itemCount: expenses.length,
+        itemBuilder: (context, index) => Expense_Item(
+            title:expenses[index].title,
+            price:expenses[index].amount,
+            date:expenses[index].date,
+            category:expenses[index].category),
+        // itemBuilder: (context, index) => Text(index.toString() + " - " + expenses[index].title),
+      ),
     );
   }
 }

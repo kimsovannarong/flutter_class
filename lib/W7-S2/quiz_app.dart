@@ -21,7 +21,7 @@ class QuizApp extends StatefulWidget {
 
 class _QuizAppState extends State<QuizApp> {
   Quizstate Screenstate = Quizstate.not_started;
-  int currentQuestion = 0;
+  int currentQuestionIndex = 0;
   late Submission submission;
 
   @override
@@ -38,8 +38,8 @@ class _QuizAppState extends State<QuizApp> {
 
   void submitAnswer(Question question, String answer) {
     submission.addAnswer(question, answer);
-    currentQuestion++;
-    if (currentQuestion >= widget.quiz.questions.length) {
+    currentQuestionIndex++;
+    if (currentQuestionIndex >= widget.quiz.questions.length) {
       switchScreen(Quizstate.finished);
       return;
     }
@@ -47,7 +47,7 @@ class _QuizAppState extends State<QuizApp> {
   }
 
   void restart() {
-    currentQuestion = 0;
+    currentQuestionIndex = 0;
     submission = Submission();
     switchScreen(Quizstate.not_started);
   }
@@ -61,7 +61,7 @@ class _QuizAppState extends State<QuizApp> {
         );
       case Quizstate.started:
         return QuestionScreen(
-          questions: widget.quiz.questions[currentQuestion],
+          questions: widget.quiz.questions[currentQuestionIndex],
           onTap: submitAnswer,
         );
       case Quizstate.finished:
