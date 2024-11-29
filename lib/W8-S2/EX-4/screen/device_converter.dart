@@ -19,11 +19,11 @@ class _DeviceConverterState extends State<DeviceConverter> {
   double conversion(amountIndollar) {
     switch (type) {
       case Devicetype.euro:
-        return total=amountIndollar * 0.95;// dollar to euro
+        return amountIndollar * 0.95;// dollar to euro
       case Devicetype.riels:
-        return total=amountIndollar * 4000;// dollar to riel
+        return amountIndollar * 4000;// dollar to riel
       case Devicetype.dong:
-        return total=amountIndollar * 25000; // dollar to dong
+        return amountIndollar * 25000; // dollar to dong
     }
   }
   final BoxDecoration textDecoration = BoxDecoration(
@@ -100,7 +100,7 @@ class _DeviceConverterState extends State<DeviceConverter> {
           Container(
               padding: const EdgeInsets.all(10),
               decoration: textDecoration,
-              child:  Text(total.toString()))
+              child:  Text(total.toString())), // total is double type
         ],
       )),
     );
