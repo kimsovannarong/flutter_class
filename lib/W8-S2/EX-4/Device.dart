@@ -1,0 +1,1 @@
+enum Devicetype{euro,riels,dong}

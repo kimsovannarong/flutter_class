@@ -6,8 +6,6 @@ import 'package:flutter_class/W7-S2/screens/question_screen.dart';
 import 'package:flutter_class/W7-S2/screens/result_screen.dart';
 import 'package:flutter_class/W7-S2/screens/welcome_screen.dart';
 
-
-
 Color appColor = Colors.blue[500] as Color;
 
 class QuizApp extends StatefulWidget {
@@ -46,7 +44,7 @@ class _QuizAppState extends State<QuizApp> {
     setState(() {});
   }
 
-  void restart() {
+  void onRestart() {
     currentQuestionIndex = 0;
     submission = Submission();
     switchScreen(Quizstate.not_started);
@@ -66,7 +64,7 @@ class _QuizAppState extends State<QuizApp> {
         );
       case Quizstate.finished:
         return ResultScreen(
-          onRestart: restart,
+          onRestart: onRestart,
           submission: submission,
           quiz: widget.quiz,
         );
