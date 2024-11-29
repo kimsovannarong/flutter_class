@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_class/W8-S2/EX-4/Device.dart';
-import 'dart:math';
 class DeviceConverter extends StatefulWidget {
   const DeviceConverter({super.key});
 
