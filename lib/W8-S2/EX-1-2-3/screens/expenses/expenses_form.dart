@@ -47,13 +47,13 @@ class _ExpenseFormState extends State<ExpenseForm> {
   void onAdd() {
     // 1- Get the values from inputs
     String title = _titleController.text;
-    double amount = double.parse(_valueController.text);
+    double? amount= double.parse(_valueController.text);
 
     // 2- Create the expense
     Expense expense = Expense(
         title: title,
-        amount: amount,
-        date: selectedDate!,     //  TODO :  For now it s a fake data
+        amount: amount!,
+        date: selectedDate!,     //
         category: dropdownValue); //  Done
 
     // 3- Ask the parent to add the expense
@@ -61,6 +61,35 @@ class _ExpenseFormState extends State<ExpenseForm> {
 
     // 4- Close modal
     Navigator.pop(context);
+    // alert dialog
+    if (title.isEmpty) {
+      _showAlert('Invalid input', 'The title cannot be empty.');
+      return;
+    }
+    if(amount==null){
+      _showAlert('Invalid input', 'The amount shall be a positive number');
+      return;
+    }
+  }
+  // display dialog
+  void _showAlert(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              child: const Text('Okay'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -133,7 +162,9 @@ class _ExpenseFormState extends State<ExpenseForm> {
               const SizedBox(
                 width: 20,
               ),
-              ElevatedButton(onPressed: onAdd, child: const Text('Save Expense')),
+              ElevatedButton(
+                  onPressed: onAdd,
+                  child: const Text('Save Expense')),
             ],
           )
         ],
